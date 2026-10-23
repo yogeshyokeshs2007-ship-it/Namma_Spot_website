@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Explore the menu at Namma Spot and order your favourite food.">
+  <title>Namma Spot | Good Food, Good Mood</title>
+  <link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="site-body">
+  <div class="announcement"><span class="live-dot"></span> Fresh food · Great taste · Good vibes</div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Namma Spot home"><span class="brand-mark">♨</span><span><b>Namma <i>Spot</i></b><small>GOOD FOOD · GOOD MOOD</small></span></a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open navigation">☰</button>
+    <nav class="main-nav" id="mainNav"><a class="active" href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About</a><a href="#location">Location</a><a href="#contact">Contact</a></nav>
+    <button class="button button-primary header-order" id="headerOrder">Order Online <span>↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> A LITTLE TASTE OF HAPPINESS</p>
+        <h1 id="heroShopName">Namma <em>Spot</em></h1>
+        <p class="hero-tagline" id="heroTagline">Food Brings People Together</p>
+        <p class="hero-subtitle" id="heroSubtitle">Delicious food · Great taste · Good vibes</p>
+        <div class="hero-actions"><a class="button button-primary" href="#menu">Explore Menu <span>↗</span></a><button class="button button-outline" id="heroOrder">Order Online <span>↗</span></button></div>
+        <div class="hero-trust"><div><strong>✦</strong><span>Freshly prepared</span></div><div><strong>♡</strong><span>Made with care</span></div><div><strong>★</strong><span>Big on flavour</span></div></div>
+      </div>
+      <div class="hero-visual"><img id="heroImage" src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1400&q=90" alt="Delicious signature meal" onerror="this.src='https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=1400&q=85'"><div class="hero-image-shade"></div><div class="hero-sticker"><span>MADE WITH</span><b>♥</b><span>FLAVOUR</span></div><div class="hero-photo-caption"><small>THE CROWD FAVOURITE</small><strong>One bite. Full happiness.</strong></div></div>
+      <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+    </section>
+
+    <section class="benefits section-wrap" aria-label="Shop highlights">
+      <div class="benefit"><span class="benefit-icon">♨</span><div><b>Fresh Ingredients</b><small>Quality in every bite</small></div></div>
+      <div class="benefit"><span class="benefit-icon">✧</span><div><b>Delicious Menu</b><small>Something for everyone</small></div></div>
+      <div class="benefit"><span class="benefit-icon">₹</span><div><b>Value for Money</b><small>Great taste, fair prices</small></div></div>
+      <div class="benefit"><span class="benefit-icon">♡</span><div><b>Made with Care</b><small>Food worth coming back for</small></div></div>
+    </section>
+
+    <section class="section-wrap specials-section" id="specials">
+      <div class="section-heading"><div><p class="eyebrow">MADE TO MAKE YOU HUNGRY</p><h2>Our <em>Special</em> Dishes</h2><p class="section-description">Good food, generous flavour, and your new favourites.</p></div><a class="text-link" href="#menu">See full menu <span>↗</span></a></div>
+      <div class="food-grid specials-grid" id="specialsGrid"><div class="loading-state">Loading our specials…</div></div>
+    </section>
+
+    <section class="menu-section" id="menu"><div class="section-wrap">
+      <div class="section-heading menu-heading"><div><p class="eyebrow">FIND YOUR NEW FAVOURITE</p><h2>The <em>Menu</em></h2><p class="section-description">Made fresh. Full of flavour. Ready when you are.</p></div><label class="menu-search"><span>⌕</span><input type="search" id="menuSearch" placeholder="Search food…" aria-label="Search menu"></label></div>
+      <div class="category-row" id="categoryRow"><button class="category-chip active" data-category="All">All items</button></div>
+      <div class="food-grid menu-grid" id="menuGrid"><div class="loading-state">Loading the menu…</div></div>
+      <div class="menu-footnote">Menu items and prices shown here are starter examples. The shop owner can update them in the admin dashboard.</div>
+    </div></section>
+
+    <section class="order-banner section-wrap"><div class="banner-glow"></div><div class="banner-icon">◉</div><div><p class="eyebrow">YOUR CRAVINGS, SORTED</p><h2>Hungry already?</h2><p>Choose a delivery app and order Namma Spot favourites there.</p></div><button class="button button-light" id="bannerOrder">Order Online <span>↗</span></button></section>
+
+    <section class="about-location section-wrap" id="about"><article class="about-panel"><p class="eyebrow">A LITTLE ABOUT US</p><h2>Good food.<br><em>Good mood.</em></h2><p id="aboutText">Good food, great taste and a warm welcome. Update this description in the admin dashboard to tell customers what makes your shop special.</p><div class="about-perks"><span>✦ Flavour first</span><span>♡ Made with care</span></div></article>
+      <article class="location-panel" id="location"><p class="eyebrow">COME SAY HELLO</p><h2>Find <em>Us</em></h2><div class="location-card"><div class="map-placeholder"><div class="map-road road-a"></div><div class="map-road road-b"></div><div class="map-road road-c"></div><div class="map-pin">●<span>Namma Spot</span></div><span class="map-label map-label-one">MAIN ROAD</span><span class="map-label map-label-two">YOUR NEIGHBOURHOOD</span></div><div class="location-details"><span class="location-pin">⌖</span><div class="location-copy"><p id="shopAddress">Add your shop address in Admin Settings</p><small id="openingHours">Add opening hours in Admin Settings</small></div><a id="mapLink" href="https://maps.app.goo.gl/Z97j3JiXZvpqCGHx5" target="_blank" rel="noopener">Get directions ↗</a></div></div></article>
+    </section>
+
+    <section class="contact-strip section-wrap" id="contact"><div><p class="eyebrow">LET'S CONNECT</p><h2>We'd love to <em>hear from you.</em></h2><p>Order online through a delivery app, or visit us in Manavalanagar.</p></div><div class="contact-actions"><a class="contact-action swiggy-action" id="contactSwiggy" href="https://www.swiggy.com/search?query=Namma%20Spot%20Manavalanagar" target="_blank" rel="noopener"><span>↗</span><b>Swiggy</b></a><a class="contact-action zomato-action" id="contactZomato" href="https://www.zomato.com/chennai/namma-spot-ponniyammanmedu/order" target="_blank" rel="noopener"><span>↗</span><b>Zomato</b></a><a class="contact-action directions-action" id="contactDirections" href="https://www.google.com/maps/dir/?api=1&destination=13.1099799%2C79.9191939" target="_blank" rel="noopener"><span>⌖</span><b>Directions</b></a><a class="contact-action instagram-action" id="contactInstagram" href="#contact" target="_blank" rel="noopener"><span>◎</span><b>Instagram</b></a></div></section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">♨</span><span><b>Namma <i>Spot</i></b><small>GOOD FOOD · GOOD MOOD</small></span></a><p>Made for food lovers. <span>♥</span></p><a class="admin-link" href="/admin">Admin dashboard</a><small class="copyright">© <span id="year"></span> Namma Spot</small></footer>
+
+  <div class="cart-fab-wrap"><button class="cart-fab" id="cartOpen" aria-label="Open your order basket">🛍 <span id="cartCount">0</span></button></div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div><aside class="cart-drawer" id="cartDrawer" aria-label="Your order basket" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">READY WHEN YOU ARE</p><h2>Your <em>Order</em></h2></div><button class="close-button" id="cartClose" aria-label="Close basket">×</button></div><div id="cartItems" class="cart-items"><div class="empty-cart">Your basket is waiting for something delicious. 🍗</div></div><div class="cart-footer"><div class="cart-total"><span>Estimated total</span><strong id="cartTotal">₹0</strong></div><p class="cart-note">Your basket is a preview; add items again in your chosen delivery app.</p><button class="button button-primary checkout-button" id="checkoutButton">Choose delivery app ↗</button><button class="clear-cart" id="clearCart">Clear basket</button></div></aside>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body></html>

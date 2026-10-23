@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b0b0b">
+  <title>Namma Spot | Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+</head>
+<body>
+  <main class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <a class="brand" href="/"><span class="brand-mark">♨</span><span><b>Namma <i>Spot</i></b><small>SHOP ADMIN</small></span></a>
+      <p class="eyebrow">WELCOME BACK</p><h1>Admin <em>login</em></h1><p class="muted">Sign in to manage your menu and shop information.</p>
+      <label for="adminPassword">Admin password</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Enter admin password" required>
+      <button class="primary-btn" type="submit" id="loginButton">Sign in <span>↗</span></button><p class="form-message" id="loginMessage" role="status"></p>
+      <a class="back-link" href="/">← Back to website</a>
+    </form>
+  </main>
+
+  <div class="app-shell hidden" id="appShell">
+    <aside class="sidebar">
+      <a class="brand side-brand" href="/"><span class="brand-mark">♨</span><span><b>Namma <i>Spot</i></b><small>ADMIN CONSOLE</small></span></a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <button class="side-link active" data-tab="overview"><span>▦</span> Overview</button>
+      <button class="side-link" data-tab="menu"><span>☷</span> Manage menu</button>
+      <button class="side-link" data-tab="settings"><span>⚙</span> Shop settings</button>
+      <div class="sidebar-bottom"><a class="side-link" href="/" target="_blank" rel="noopener"><span>↗</span> View website</a><button class="side-link" id="logoutButton"><span>⇥</span> Log out</button><div class="sidebar-note"><span class="status-dot"></span> Admin session active</div></div>
+    </aside>
+    <main class="admin-main">
+      <header class="topbar"><div><p class="eyebrow">NAMMA SPOT · MANAGEMENT</p><h1 id="pageTitle">Overview</h1></div><a class="view-site" href="/" target="_blank" rel="noopener">View live website ↗</a></header>
+      <section class="panel-view" id="overviewPanel">
+        <div class="welcome-banner"><div><p class="eyebrow">YOUR SHOP AT A GLANCE</p><h2>Good food. <em>Good business.</em></h2><p>Keep your menu fresh and your shop details up to date.</p></div><div class="welcome-icon">♨</div></div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-icon orange">☷</span><div><p>Total menu items</p><strong id="statItems">—</strong><small>All dishes in your menu</small></div></article><article class="stat-card"><span class="stat-icon green">✓</span><div><p>Available now</p><strong id="statAvailable">—</strong><small>Visible on your website</small></div></article><article class="stat-card"><span class="stat-icon gold">★</span><div><p>Featured dishes</p><strong id="statFeatured">—</strong><small>Shown in special dishes</small></div></article></div>
+        <div class="content-card"><div class="card-heading"><div><h3>Quick actions</h3><p>Keep your website accurate and inviting.</p></div></div><div class="quick-actions"><button data-go-tab="menu"><span>＋</span><div><b>Add a menu item</b><small>Add a dish, price, category and photo.</small></div><strong>→</strong></button><button data-go-tab="settings"><span>⚙</span><div><b>Update shop details</b><small>Set delivery links, address, hours and contact details.</small></div><strong>→</strong></button><a href="/" target="_blank" rel="noopener"><span>↗</span><div><b>Preview the website</b><small>Check how customers see the menu.</small></div><strong>→</strong></a></div></div>
+        <div class="content-card"><div class="card-heading"><div><h3>Recent menu items</h3><p>Most recently listed dishes.</p></div><button class="text-button" data-go-tab="menu">Manage menu ↗</button></div><div class="table-wrap"><table><thead><tr><th>Dish</th><th>Category</th><th>Price</th><th>Status</th></tr></thead><tbody id="recentItems"><tr><td colspan="4" class="table-empty">Loading menu…</td></tr></tbody></table></div></div>
+      </section>
+
+      <section class="panel-view hidden" id="menuPanel">
+        <div class="panel-intro"><div><h2>Menu <em>management</em></h2><p>Add, edit, feature, or temporarily hide dishes from your website.</p></div><button class="primary-btn" id="addItemButton">＋ Add menu item</button></div>
+        <div class="toolbar"><label class="search-input">⌕ <input id="adminMenuSearch" type="search" placeholder="Search menu items…"></label><select id="adminCategoryFilter" aria-label="Filter by category"><option value="All">All categories</option></select><select id="adminStatusFilter" aria-label="Filter by availability"><option value="All">All statuses</option><option value="Available">Available</option><option value="Hidden">Hidden</option></select></div>
+        <div class="content-card table-card"><div class="table-wrap"><table><thead><tr><th>Menu item</th><th>Category</th><th>Price</th><th>Featured</th><th>Status</th><th>Actions</th></tr></thead><tbody id="menuTable"><tr><td colspan="6" class="table-empty">Loading menu…</td></tr></tbody></table></div><div class="table-foot" id="menuCount"></div></div>
+        <p class="help-note">Tip: use an image URL from your image host. Only available items appear on the public website.</p>
+      </section>
+
+      <section class="panel-view hidden" id="settingsPanel">
+        <div class="panel-intro"><div><h2>Shop <em>settings</em></h2><p>These details are shown throughout your public website.</p></div><span class="settings-tag">PUBLIC WEBSITE</span></div>
+        <form class="settings-form content-card" id="settingsForm">
+          <div class="form-section-heading"><span>01</span><div><h3>Brand identity</h3><p>Your name and first impression.</p></div></div>
+          <div class="form-grid"><label>Shop name<input name="name" required maxlength="80" placeholder="Namma Spot"></label><label>Tagline<input name="tagline" maxlength="120" placeholder="Food Brings People Together"></label><label class="full">Short subtitle<input name="subtitle" maxlength="180" placeholder="Delicious food · Great taste · Good vibes"></label><label class="full">About the shop<textarea name="about" rows="4" maxlength="1200" placeholder="Tell customers about your shop..."></textarea></label><label class="full">Hero photo URL<input name="hero_image" type="url" placeholder="https://..."></label></div>
+          <div class="form-section-heading"><span>02</span><div><h3>Contact and location</h3><p>Help customers reach and find you.</p></div></div>
+          <div class="form-grid"><label>WhatsApp / phone number (optional)<input name="phone" inputmode="tel" placeholder="Leave blank if unavailable"></label><label>Opening hours<input name="opening_hours" placeholder="e.g. 11 AM – 11 PM"></label><label class="full">Full shop address<input name="address" maxlength="250" placeholder="Street, area, town, PIN code"></label><label class="full">Google Maps directions link<input name="map_url" type="url" placeholder="Google Maps directions URL"></label><label class="full">Swiggy restaurant/search link<input name="swiggy_url" type="url" placeholder="https://www.swiggy.com/..."></label><label class="full">Zomato restaurant/menu link<input name="zomato_url" type="url" placeholder="https://www.zomato.com/..."></label><label class="full">Instagram profile link<input name="instagram_url" type="url" placeholder="https://instagram.com/..."></label></div>
+          <div class="form-actions"><p id="settingsMessage" class="form-message" role="status"></p><button class="primary-btn" type="submit" id="saveSettingsButton">Save shop settings ↗</button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="itemModalBackdrop"><section class="item-modal" role="dialog" aria-modal="true" aria-labelledby="itemModalTitle"><div class="modal-heading"><div><p class="eyebrow">MENU EDITOR</p><h2 id="itemModalTitle">Add a <em>menu item</em></h2></div><button class="icon-button" id="closeItemModal" aria-label="Close dialog">×</button></div>
+    <form id="itemForm"><input type="hidden" name="id"><div class="form-grid"><label>Dish name<input name="name" required maxlength="100" placeholder="Chicken Biryani"></label><label>Category<input name="category" required maxlength="50" placeholder="Biryani" list="categoryOptions"><datalist id="categoryOptions"><option>Biryani</option><option>Chicken</option><option>Shawarma</option><option>Fried Rice</option><option>Snacks</option><option>Beverages</option></datalist></label><label>Price (₹)<input name="price" required type="number" min="0" step="0.5" placeholder="120"></label><label>Food photo URL<input name="image" type="url" placeholder="https://..."></label><label class="full">Short description<textarea name="description" rows="3" maxlength="240" placeholder="Aromatic rice, spices and tender chicken."></textarea></label></div><div class="toggle-row"><label><input name="featured" type="checkbox"> <span>Feature this dish on the homepage</span></label><label><input name="available" type="checkbox" checked> <span>Available on website</span></label></div><p class="form-message" id="itemFormMessage" role="status"></p><div class="modal-actions"><button class="secondary-btn" type="button" id="cancelItemModal">Cancel</button><button class="primary-btn" type="submit" id="saveItemButton">Save menu item ↗</button></div></form>
+  </section></div>
+  <div class="toast" id="adminToast" role="status"></div>
+</body>
+</html>
